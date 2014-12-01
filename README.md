@@ -1,7 +1,4 @@
-# App
+# ng-starter
 
-A simplified version of the ngBoilerplate angular project template.
-
+AngularJs starter app
 ***
-
-## Quick Start
