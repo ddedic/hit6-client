@@ -12,6 +12,7 @@
 
 }(angular.module("App", [
     'App.home',
+    'App.shops',
     'App.about',
     'templates-app',
     'templates-common',
