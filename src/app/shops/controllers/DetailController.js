@@ -8,6 +8,12 @@
             console.log(shopDetails);
 
             $scope.shopDetails = shopDetails.data;
+
+
+
+            if ( angular.isDefined( shopDetails.data.id ) ) {
+                $scope.pageTitle = shopDetails.data.id + ' | ng-starter' ;
+            }
         };
 
 
