@@ -11,7 +11,7 @@ angular.module('App.shops')
 
 
         dataFactory.getShop = function (id) {
-            return $http.get(urlBase + '/' + id, {cache: true});
+            return $http.get(urlBase + '/' + id + '?include=city', {cache: true});
         };
 
 

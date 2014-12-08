@@ -54,7 +54,40 @@
 
 
             data:{ pageTitle: 'Shops details' }
+        })
+
+
+        .state('shops.bets', {
+            url: '/{shopId:[0-9]}/bets',
+            views: {
+                "content@shops": {
+                    controller: 'DetailController',
+                    templateUrl: 'shops/views/detail.tpl.html'
+                }
+            },
+
+
+            resolve: {
+                shopDetails: function(shopsFactory, $stateParams, $q) {
+
+                    var deferred = $q.defer();
+
+                    shopsFactory.getShop($stateParams.shopId)
+                        .success(function (data) {
+                            deferred.resolve(data);
+                        })
+                        .error(function (error) {
+                            console.log(error);
+                        });
+
+                    return deferred.promise;
+                }
+            },
+
+
+            data:{ pageTitle: 'Shop bets' }
         });
+
 
     });
 
