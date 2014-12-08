@@ -11,9 +11,9 @@
  */
 (function(app) {
 
-    app.config(function ($stateProvider) {
+    app.config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('home', {
-            url: '/home',
+            url: '/',
             views: {
                 "main": {
                     controller: 'HomeController',
@@ -22,11 +22,15 @@
             },
             data:{ pageTitle: 'Home' }
         });
-    });
+    }]);
 
     // As you add controllers to a module and they grow in size, feel free to place them in their own files.
     //  Let each module grow organically, adding appropriate organization and sub-folders as needed.
-    app.controller('HomeController', function ($scope) {
+    app.controller('HomeController', ['$scope', '$location', function ($scope, $location) {
+
+
+
+
 
         var init = function() {
             // A definitive place to put everything that needs to run when the controller starts. Avoid
@@ -40,7 +44,7 @@
         };
 
         init();
-    });
+    }]);
 
 // The name of the module, followed by its dependencies (at the bottom to facilitate enclosure)
 }(angular.module("App.home", [

@@ -1,0 +1,7 @@
+<h1>Shops</h1>
+<p class="lead">Select Shop you want to play in!</p>
+<hr />
+
+<ul>
+    <li ng-repeat="shop in shops"><a ui-sref="shops.details({ shopId: shop.id })">{{ shop.link.absolute }}</a></li>
+</ul>

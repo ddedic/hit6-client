@@ -63,3 +63,66 @@ footer {
 [class^="ion-"] {
   margin-right: 5px;
 }
+
+
+// Moving stars background
+// --------------------------
+
+@-webkit-keyframes STAR-MOVE {
+  from {
+    left: 0;
+    top: 0;
+  }
+  to {
+    left: -10000px;
+    top: -2000px;
+  }
+}
+#midground {
+  background: url(../assets/img/midground.png) repeat 20% 20%;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.5;
+  z-index: -200;
+  -moz-animation-name: STAR-MOVE;
+  -moz-animation-duration: 150s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-name: STAR-MOVE;
+  -ms-animation-duration: 150s;
+  -ms-animation-timing-function: linear;
+  -ms-animation-iteration-count: infinite;
+  -webkit-animation-name: STAR-MOVE;
+  -webkit-animation-duration: 150s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+#foreground {
+  background: url(../assets/img/foreground.png) repeat 35% 35%;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.5;
+  z-index: -300;
+  -moz-animation-name: STAR-MOVE;
+  -moz-animation-duration: 100s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-name: STAR-MOVE;
+  -ms-animation-duration: 100s;
+  -ms-animation-timing-function: linear;
+  -ms-animation-iteration-count: infinite;
+  -webkit-animation-name: STAR-MOVE;
+  -webkit-animation-duration: 100s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+
+body.ng-fullscreen-bg {
+  background: url(../assets/img/bg/02.jpg);
+  height: 100%;
+}
+
+.ng-fullscreen-footer {
+  display:none;
+}

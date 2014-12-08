@@ -1,33 +1,67 @@
 (function(app) {
 
     app.config(function ($stateProvider) {
-        $stateProvider.state('shops', {
-            url: '/shops',
+        $stateProvider
+            .state('shops', {
+                url: '/shops',
+
+                abstract: true,
+
+                views: {
+                    "main": {
+                        templateUrl: 'shops/views/main.tpl.html'
+                    }
+                }
+        })
+
+        .state('shops.list', {
+            url: '',
             views: {
-                "main": {
-                    controller: 'ShopsController',
-                    templateUrl: 'shops/views/index.tpl.html'
+                "content@shops": {
+                    controller: 'ListController',
+                    templateUrl: 'shops/views/list.tpl.html'
                 }
             },
-            data:{ pageTitle: 'Shops' }
+            data:{ pageTitle: 'Shops list' }
+        })
+
+        .state('shops.details', {
+            url: '/{shopId:[0-9]}',
+            views: {
+                "content@shops": {
+                    controller: 'DetailController',
+                    templateUrl: 'shops/views/detail.tpl.html'
+                }
+            },
+
+
+            resolve: {
+                shopDetails: function(shopsFactory, $stateParams, $q) {
+
+                    var deferred = $q.defer();
+
+                        shopsFactory.getShop($stateParams.shopId)
+                            .success(function (data) {
+                                deferred.resolve(data);
+                            })
+                            .error(function (error) {
+                                console.log(error);
+                            });
+
+                    return deferred.promise;
+                }
+            },
+
+
+            data:{ pageTitle: 'Shops details' }
         });
+
     });
 
-    app.controller('ShopsController', function ($resource, $scope) {
 
-        var init = function() {
-            // A definitive place to put everything that needs to run when the controller starts. Avoid
-            //  writing any code outside of this function that executes immediately.
-
-            console.log('Shops');
-        };
-
-        $scope.shops = [];
-
-        init();
-    });
 
 }(angular.module("App.shops", [
     'ui.router',
-    'ngResource'
+    'App.shops.controllers.list',
+    'App.shops.controllers.details'
 ])));
